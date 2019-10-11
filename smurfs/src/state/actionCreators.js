@@ -14,4 +14,21 @@ export const getSmurfs = () => dispatch => {
         .catch(error => {
             debugger
         });
-}
+};
+
+export const addSmurf = (formValues, actions) => dispatch => {
+    const smurfToPost = {
+        name: formValues.name,
+        age: formValues.age,
+        height: formValues.height,
+    };
+
+    axios
+        .post(smurfApi, smurfToPost)
+        .then(response => {
+            const newSmurfFromApi = response.data;
+            dispatch({ type: types.ADD_SMURF, payload: newSmurfFromApi, });
+            actions.resetForm();
+        })
+        .catch();
+};
