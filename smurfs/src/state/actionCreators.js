@@ -12,7 +12,8 @@ export const getSmurfs = () => dispatch => {
             dispatch({ type: types.GET_SMURFS, payload: smurfs, });
         })
         .catch(error => {
-            debugger
+            const errorMessage = `Error: ${error.response.status} ${error.response.statusText}`;
+            dispatch({ type: types.ERROR_MESSAGE, payload: errorMessage, });
         });
 };
 
