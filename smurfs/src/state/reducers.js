@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 
 const initialList = [];
+const initialError = '';
 
 export function smurfReducer(smurfList = initialList, action) {
     switch (action.type) {
@@ -10,5 +11,14 @@ export function smurfReducer(smurfList = initialList, action) {
             return smurfList.concat(action.payload);
         default:
             return smurfList;
+    }
+};
+
+export function errorReducer(errorMessage = initialError, action) {
+    switch (action.type) {
+        case types.ERROR_MESSAGE:
+            return action.payload;
+        default:
+            return errorMessage;
     }
 };
