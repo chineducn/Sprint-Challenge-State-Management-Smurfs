@@ -28,8 +28,9 @@ export const addSmurf = (formValues, actions) => dispatch => {
     axios
         .post(smurfApi, smurfToPost)
         .then(response => {
-            const newSmurfFromApi = response.data;
-            dispatch({ type: types.ADD_SMURF, payload: newSmurfFromApi, });
+            // debugger
+            const newSmurfsFromApi = response.data;
+            dispatch({ type: types.GET_SMURFS, payload: newSmurfsFromApi, });
             dispatch({ type: types.ERROR_MESSAGE, payload: '', });
             actions.resetForm();
         })
