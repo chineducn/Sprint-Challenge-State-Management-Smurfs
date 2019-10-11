@@ -26,6 +26,7 @@ export class App extends Component {
         />
         <SmurfList
           smurfList={this.props.smurfList}
+          errorMessage={this.props.errorMessage}
         />
       </div>
     );
