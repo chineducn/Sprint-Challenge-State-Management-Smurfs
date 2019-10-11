@@ -8,7 +8,7 @@ export function smurfReducer(smurfList = initialList, action) {
         case types.GET_SMURFS:
             return action.payload;
         case types.ADD_SMURF:
-            return smurfList.concat(action.payload);
+            return action.payload;
         default:
             return smurfList;
     }
