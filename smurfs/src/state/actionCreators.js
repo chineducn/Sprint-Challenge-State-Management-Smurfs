@@ -10,6 +10,7 @@ export const getSmurfs = () => dispatch => {
         .then(response => {
             const smurfs = response.data;
             dispatch({ type: types.GET_SMURFS, payload: smurfs, });
+            dispatch({ type: types.ERROR_MESSAGE, payload: '', });
         })
         .catch(error => {
             const errorMessage = `Error: ${error.response.status} ${error.response.statusText}`;
@@ -29,7 +30,11 @@ export const addSmurf = (formValues, actions) => dispatch => {
         .then(response => {
             const newSmurfFromApi = response.data;
             dispatch({ type: types.ADD_SMURF, payload: newSmurfFromApi, });
+            dispatch({ type: types.ERROR_MESSAGE, payload: '', });
             actions.resetForm();
         })
-        .catch();
+        .catch(error => {
+            const errorMessage = error.response.data.Error;
+            dispatch({ type: types.ERROR_MESSAGE, payload: errorMessage, });
+        });
 };
